@@ -2,6 +2,7 @@ package com.jeeneee.urlshortener.model;
 
 import static lombok.AccessLevel.PRIVATE;
 
+import java.io.Serializable;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.apache.commons.lang.StringUtils;
@@ -11,7 +12,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Getter
 @NoArgsConstructor(access = PRIVATE)
 @Document("urls")
-public class Url {
+public class Url implements Serializable {
 
     @Id
     private String id;
