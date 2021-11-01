@@ -18,7 +18,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 @ExtendWith(MockitoExtension.class)
 class UrlServiceTest {
 
-    private static final String LONG_URL = "https://urlshortener.shop/abcdefghijklmnopqrstuvwxyz";
+    private static final String LONG_URL = "https://github.com/jeeneee";
     private static final String SHORT_URL = "A3ec81D";
 
     @Mock

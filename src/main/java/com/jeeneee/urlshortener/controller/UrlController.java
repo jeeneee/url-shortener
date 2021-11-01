@@ -30,7 +30,7 @@ public class UrlController {
     @PostMapping
     public ResponseEntity<Void> createShortUrl(@Valid @RequestBody UrlRequest request) {
         Url url = urlService.saveIfAbsent(request);
-        return ResponseEntity.created(URI.create(baseUrl + '/' + url.getShortUrl())).build();
+        return ResponseEntity.created(URI.create(baseUrl + url.getShortUrl())).build();
     }
 
     @GetMapping("/{shortUrl}")

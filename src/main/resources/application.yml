@@ -16,5 +16,5 @@ spring:
     counter-path: "/counters/url-counter"
 
 application:
-  base-url: "http://localhost:8080/"
+  base-url: "https://urlshortener.shop/"
   salt: "jeeneee"

@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 class UrlTest {
 
-    private static final String LONG_URL = "https://urlshortener.shop/abcdefghijklmnopqrstuvwxyz";
+    private static final String LONG_URL = "https://github.com/jeeneee";
     private static final String SHORT_URL = "A3ec81D";
 
     @DisplayName("URL 생성 - 예외 발생")
