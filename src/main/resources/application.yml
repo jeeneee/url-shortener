@@ -17,4 +17,3 @@ spring:
 
 application:
   base-url: "https://urlshortener.shop/"
-  salt: "jeeneee"

@@ -14,11 +14,6 @@
       "name": "application.counter-path",
       "type": "java.lang.String",
       "description": "Description for application.counter-path."
-    },
-    {
-      "name": "application.salt",
-      "type": "java.lang.String",
-      "description": "Description for application.salt."
     }
   ]
 }
