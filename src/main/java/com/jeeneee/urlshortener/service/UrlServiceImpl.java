@@ -30,7 +30,8 @@ public class UrlServiceImpl implements UrlService {
     @Override
     @Cacheable(value = "short", key = "#shortUrl", unless = "#result == null")
     public Url findByShortUrl(String shortUrl) {
-        return urlRepository.findByShortUrl(shortUrl);
+        return Optional.ofNullable(urlRepository.findByShortUrl(shortUrl))
+            .orElseThrow(() -> new IllegalArgumentException("해당 URL이 존재하지 않습니다."));
     }
 
     @Override
