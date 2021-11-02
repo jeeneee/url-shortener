@@ -1,6 +1,7 @@
 package com.jeeneee.urlshortener.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
 
@@ -54,9 +55,8 @@ class UrlServiceTest {
     @DisplayName("Short URL이 없으면 null을 반환한다.")
     @Test
     void findByShortUrl_Absent_ReturnEmpty() {
-        given(urlRepository.findByShortUrl(any())).willReturn(null);
-
-        assertThat(urlService.findByShortUrl(SHORT_URL)).isNull();
+        assertThatThrownBy(() -> urlService.findByShortUrl(SHORT_URL))
+            .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("Short URL이 있으면 해당 URL 반환한다.")
