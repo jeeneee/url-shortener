@@ -1,0 +1,42 @@
+.App {
+  text-align: center;
+}
+
+h1 {
+  font-size: 2rem;
+}
+h2 {
+  font-size: 1rem;
+}
+
+input {
+  border-right: none;
+}
+
+input:focus {
+  outline: none;
+}
+
+button {
+  border-left: none;
+  background-color: black;
+  color: white;
+  font-weight: 600;
+}
+
+article {
+  margin-top: 1rem;
+  font-size: 0.8rem;
+}
+
+.message {
+  color: red;
+}
+
+p {
+  font-size: 0.8rem;
+}
+
+a {
+  font-size: 1rem;
+}
