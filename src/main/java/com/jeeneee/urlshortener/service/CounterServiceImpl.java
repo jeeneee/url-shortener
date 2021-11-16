@@ -3,8 +3,6 @@ package com.jeeneee.urlshortener.service;
 import static org.apache.curator.framework.CuratorFrameworkFactory.newClient;
 
 import com.jeeneee.urlshortener.model.CounterRange;
-import org.apache.curator.framework.recipes.shared.SharedCount;
-import org.apache.curator.framework.recipes.shared.VersionedValue;
 import org.apache.curator.retry.RetryNTimes;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -34,21 +32,12 @@ public class CounterServiceImpl implements CounterService {
     }
 
     private Integer getCounter() {
-        var client = newClient(baseUrl, new RetryNTimes(3, 100));
-        client.start();
-        var sharedCounter = new SharedCount(client, path, 0);
-        try {
-            sharedCounter.start();
-
-            VersionedValue<Integer> counter = sharedCounter.getVersionedValue();
-            while (!sharedCounter.trySetCount(counter, counter.getValue() + 1)) {
-                counter = sharedCounter.getVersionedValue();
-            }
-
-            sharedCounter.close();
-            client.close();
-
-            return counter.getValue();
+        try (var client = newClient(baseUrl, new RetryNTimes(3, 100))) {
+            client.start();
+            Integer counter = Integer.valueOf(new String(client.getData().forPath(path)));
+            counter++;
+            client.setData().forPath(path, String.valueOf(counter).getBytes());
+            return counter;
         } catch (Exception e) {
             throw new IllegalArgumentException();
         }
